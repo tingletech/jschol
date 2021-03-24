@@ -59,12 +59,12 @@ def checkRedirect(origURI)
     elsif uri.path =~ %r{^/uc/stats/}
       uri = URI.parse("https://help.escholarship.org/support/solutions/articles/9000131087")
       break
-    elsif uri.path =~ %r{^/uc/([^/]+)(.*)}
-      uri = handleUnitRedirect(uri, $1, $2)
     elsif uri.host == "repositories.cdlib.org"
       uri = handleBepressRedirect(uri)
     elsif uri.host =~ /dermatology(-s10)?.cdlib.org/
       uri = handleDojRedirect(uri)
+    elsif uri.path =~ %r{^/uc/([^/]+)(.*)}
+      uri = handleUnitRedirect(uri, $1, $2)
     elsif uri.path =~ %r{^/oa_harvester/}
       uri.path = "/images#{uri.path}"
       break
