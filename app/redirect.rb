@@ -63,8 +63,10 @@ def checkRedirect(origURI)
       uri = handleUnitRedirect(uri, $1, $2)
     elsif uri.host == "repositories.cdlib.org"
       uri = handleBepressRedirect(uri)
+      uri.host = "escholarship.org"
     elsif uri.host =~ /dermatology(-s10)?.cdlib.org/
       uri = handleDojRedirect(uri)
+      uri.host = "escholarship.org"
     elsif uri.path =~ %r{^/oa_harvester/}
       uri.path = "/images#{uri.path}"
       break
