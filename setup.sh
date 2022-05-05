@@ -3,6 +3,12 @@
 # If an error occurs, stop this script
 set -e
 
+if [[ `/bin/hostname` == "*pub-submit*" ]]; then
+  printf "\n== Getting ready for an older version of ruby ==\n"
+  rm Gemfile.lock
+  echo "gem 'ezid-client'" >> Gemfile
+fi
+
 printf "== Installing local Ruby gems ==\n"
 bundle install --quiet --path=gems --binstubs
 
