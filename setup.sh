@@ -25,3 +25,6 @@ if [[ `/bin/hostname` == "*pub-submit*" ]]; then
   ./setupSplash.sh
   cd ..
 fi
+
+# test the convert
+./tools/convert.rb 2>&1 | grep "Usage:" -q && echo 'convert.rb libraries look good'
